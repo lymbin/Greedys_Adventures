@@ -41,3 +41,29 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.hg/00changelog.i
+.hg/cache/branch2-served
+.hg/cache/rbc-names-v1
+.hg/cache/rbc-revs-v1
+.hg/cache/tags
+.hg/requires
+.hg/cur-message.txt
+.hg/dirstate
+.hg/last-message.txt
+.hg/store/00changelog.i
+.hg/store/00manifest.i
+*.i
+*.d
+.hg/store/fncache
+.hg/store/undo
+.hg/store/phaseroots
+*.dirstate
+.hg/undo.desc
+.hg/store/undo.backupfiles
+.hg/store/undo.backup.fncache
+.hg/store/undo.phaseroots
+.hgignore
+.hg/thgstatus
+.hg/undo.bookmarks
+.hg/undo.branch
+*.bin
