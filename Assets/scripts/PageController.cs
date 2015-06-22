@@ -8,11 +8,11 @@ public class PageController : MonoBehaviour {
 	private AudioSource asource;
 	void Awake(){
 
-		if (FirstPage && FirstPage != gameObject) {
+		if (!FirstPage || FirstPage != gameObject) {
 			gameObject.SetActive (false);
-		} 
+		}
 
-		asource = GameObject.FindGameObjectWithTag ("GameScript").GetComponent<AudioSource>();			
+		asource = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<AudioSource>();			
 	}
 
 	void OnEnable(){
@@ -32,8 +32,10 @@ public class PageController : MonoBehaviour {
 public class pageChanger{
 	
 	public static void ChangePage(GameObject currentPage, GameObject nextPage){
-		currentPage.SetActive(false);
-		nextPage.SetActive(true);
+		if(currentPage)
+			currentPage.SetActive(false);
+		if(nextPage)
+			nextPage.SetActive(true);
 
 	}
 }

@@ -6,7 +6,7 @@ public class MuteMusic : MonoBehaviour {
 	static private AudioSource aSource;
 
 	void Awake(){
-		aSource = GameObject.FindGameObjectWithTag ("GameScript").GetComponent<AudioSource> ();
+		aSource = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<AudioSource> ();
 	}
 	static public void Mute(){
 		aSource.mute = !aSource.mute;

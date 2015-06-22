@@ -6,14 +6,14 @@ public class MenuScript : MonoBehaviour {
 	public Texture2D backgroundTexture;
 	public const int mainMenuWidth = 200;
 
-	public Game gameClass;
+	public GameManager gameClass;
 
 	private int menuType = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if (!gameClass)
-			gameClass = GameObject.FindGameObjectWithTag ("GameScript").GetComponent<Game>();
+			gameClass = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame

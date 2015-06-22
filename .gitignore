@@ -67,3 +67,7 @@ Temporary Items
 .hg/undo.bookmarks
 .hg/undo.branch
 *.bin
+*.sln
+Adventures.userprefs
+*.csproj
+*.meta

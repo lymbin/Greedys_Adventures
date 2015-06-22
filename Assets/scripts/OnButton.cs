@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum eButtonType {Exit, NewGame, Back, Settings, Shop, Secret, Mute};
+public enum eButtonType {Exit, NewGame, Back, Settings, Shop, Secret, Mute, MainMenu};
 
 public class OnButton : MonoBehaviour {
 	
@@ -34,8 +34,11 @@ public class OnButton : MonoBehaviour {
 			return;
 
 		} else if (type == eButtonType.Mute) {
-			MuteMusic.Mute();
+			MuteMusic.Mute ();
 			return;
+		} else if (type == eButtonType.MainMenu) {
+
+			Application.LoadLevel(0);
 		}
 		pageChanger.ChangePage (CurrentPage, OnClickPage);
 	}
