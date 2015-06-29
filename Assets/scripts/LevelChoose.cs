@@ -11,11 +11,11 @@ public class LevelChoose : MonoBehaviour {
 	private bool isActive;
 
 
-	void Awake () {
+	void Start () {
 		if (!gameClass)
 			gameClass = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
 
-		if (level > gameClass.currentLevel) {
+		if (level > gameClass.openedLevel) {
 			if(levelLock){
 				levelLock = Instantiate(levelLock, transform.position, Quaternion.identity) as GameObject;
 				levelLock.transform.SetParent(transform);
@@ -29,10 +29,7 @@ public class LevelChoose : MonoBehaviour {
 
 	void OnMouseDown(){
 
-		print(gameClass.currentLevel);
-
-
-		if (level > gameClass.currentLevel)
+		if (level > gameClass.openedLevel)
 			return;
 
 		string LevelName = "level" + level;

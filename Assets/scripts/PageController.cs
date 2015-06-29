@@ -5,23 +5,22 @@ public class PageController : MonoBehaviour {
 
 	public GameObject FirstPage;
 	public AudioClip OnChageMusic;
-	private AudioSource asource;
-	void Awake(){
 
+	void Awake(){
 		if (!FirstPage || FirstPage != gameObject) {
 			gameObject.SetActive (false);
 		}
+	}
 
-		asource = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<AudioSource>();			
+	void Start(){
+		if(gameObject.activeInHierarchy)
+			if(OnChageMusic)
+				SoundManager.instance.PlayMusic (OnChageMusic);
 	}
 
 	void OnEnable(){
-		if (OnChageMusic) {
-			if(asource.clip != OnChageMusic){
-				asource.clip = OnChageMusic;
-				asource.Play();
-			}		
-		}	
+		if(OnChageMusic)
+			SoundManager.instance.PlayMusic (OnChageMusic);
 	}
 
 	void OnDisable(){

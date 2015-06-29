@@ -34,7 +34,7 @@ public class OnButton : MonoBehaviour {
 			return;
 
 		} else if (type == eButtonType.Mute) {
-			MuteMusic.Mute ();
+			SoundManager.MuteMusic ();
 			return;
 		} else if (type == eButtonType.MainMenu) {
 

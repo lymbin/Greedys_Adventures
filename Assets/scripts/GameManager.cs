@@ -4,24 +4,34 @@ using UnityEngine.Events;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	public int currentLevel = 0;
+
+	public int openedLevel = 0;
 	
 	public bool isCenzored = true;
 	public bool isOpenSecret = false;
-	
-	public Toggle cenzoredToggle;
-	public GameObject MiniMenuPage;
-	
-	// Use this for initialization
-	void Start () {
+
+	public GameObject MenuPage;
+
+	public static GameManager instance = null;
+
+	void Awake () {
+
+		if (!instance)
+			instance = this;
+		else if(instance != this){
+			Destroy(instance);
+			instance = this;
+		}
+
+		DontDestroyOnLoad (gameObject);
+
 		LoadGame ();
-		if (cenzoredToggle)
-			cenzoredToggle.isOn = isCenzored;
 	}
 	
 	void LoadGame () {
-		if(currentLevel == 0)
-			currentLevel = PlayerPrefs.GetInt ("LevelCount");
+		// temporary use this for tests
+		if(openedLevel == 0)
+			openedLevel = PlayerPrefs.GetInt ("LevelCount");
 
 		int cenzor = PlayerPrefs.GetInt("IsCenzored");
 
@@ -32,7 +42,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void SaveGame () {
-		PlayerPrefs.SetInt ("LevelCount", currentLevel);
+		PlayerPrefs.SetInt ("LevelCount", openedLevel);
 		
 		if(!isCenzored)
 			PlayerPrefs.SetInt("IsCenzored", 0);
@@ -42,8 +52,8 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
-			if(MiniMenuPage){
-				MiniMenuPage.SetActive(!MiniMenuPage.activeInHierarchy);
+			if(MenuPage){
+				MenuPage.SetActive(!MenuPage.activeInHierarchy);
 			}
 		}
 	}
@@ -52,7 +62,7 @@ public class GameManager : MonoBehaviour {
 		SaveGame ();
 	}
 	
-	public void OnValueChanged(bool Next){
-		isCenzored = Next;
+	public void OnValueChanged(bool value){
+		isCenzored = value;
 	}
 }
